@@ -28,7 +28,7 @@ const items: Item[] = [
     },
     {
         title: 'Projects',
-        path: paths.index,
+        path: '/#projects',
         number: '03',
     }, 
     {
@@ -52,8 +52,13 @@ export const Navbar: FC<NavbarProps> = (props) => {
     const offset = 64;
     const delay = 50;
 
+    const [scrolledPercentage, setScrolledPercentage] = useState<number>(0.0);
+
     const handleWindowScroll = useCallback(
         (): void => {
+            var height = document.body.scrollHeight - document.documentElement.clientHeight;
+            setScrolledPercentage(window.scrollY / height * 100);
+        
           if (window.scrollY > offset) {
             setElevate(true);
           } else {
@@ -97,6 +102,15 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     })
                 }}
                 >
+                    
+                    <Box
+                    sx={{
+                        height: 4,
+                        background: '#04AA6D',
+                        width: (scrolledPercentage + '%'),
+                        borderRadius: 2.5
+                    }}/>
+
                     <Stack
                     direction='row'
                     spacing={2}

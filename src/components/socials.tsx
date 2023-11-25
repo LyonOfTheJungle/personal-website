@@ -21,7 +21,11 @@ export const SocialsButtons: FC = (props) => {
                 borderRadius: '50%',
                 boxShadow: 16
             }}>
-                <IconButton color='primary' size='large'>
+                <IconButton
+                color='primary'
+                size='large'
+                target='_blank'
+                href='https://github.com/LyonOfTheJungle/'>
                     <SvgIcon>
                         <FaGithub/>
                     </SvgIcon>

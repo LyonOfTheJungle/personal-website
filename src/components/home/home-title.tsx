@@ -1,5 +1,6 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme, Link } from "@mui/material";
 import { FC } from "react";
+import NextLink from 'next/link';
 
 
 export const HomeTitle: FC = () => {
@@ -37,9 +38,17 @@ export const HomeTitle: FC = () => {
                 component='span'
                 color='primary.main'
                 variant='inherit'>
-                    Deswik Modules&nbsp;
+                    
                 </Typography>
-                 for clients that are tailored made to their needs and vastly increases their productivity.
+                <Link
+                component={NextLink}
+                underline="hover"
+                color='primary.main'
+                variant="subtitle1"
+                href="https://www.deswik.com/software/">
+                  Deswik Modules
+                </Link>
+                &nbsp;for clients that are tailored made to their needs and vastly increases their productivity.
                 </Typography>
 
             </Box>

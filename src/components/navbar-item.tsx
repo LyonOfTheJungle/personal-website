@@ -39,7 +39,8 @@ export const NavbarItem: FC<NavbarItemProps> = (props) => {
         linkProps = isExternal ? {
             component: 'a',
             href: path,
-            target: '_blank'
+            target: '_blank',
+            scroll: false
         } : {
             component: NextLink,
             href: path

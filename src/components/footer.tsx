@@ -5,7 +5,7 @@ import {
 import { FaGithub } from 'react-icons/fa6';
 
 export const Footer: FC = (props) => {
-    const path: string = 'https://github.com/';
+    const path: string = 'https://github.com/LyonOfTheJungle/personal-website';
     return (
     <Box
     id='footer'
