@@ -44,21 +44,21 @@ export const HomeTimeline: FC = () => {
                         <TimelineItem>
                             <TimelineContent
                             sx={{
-                                px: 10
+                                //px: 10
                             }}>
                                 <Typography
                                 variant='h4'
-                                align='right'>
+                                align='center'>
                                     Work Experience
                                 </Typography>
                             </TimelineContent>
                             <TimelineOppositeContent
                             sx={{
-                                px: 10
+                                //px: 10
                             }}>
                                 <Typography
                                 variant='h4'
-                                align='left'>
+                                align='center'>
                                     Education
                                 </Typography>
                             </TimelineOppositeContent>
@@ -99,7 +99,7 @@ export const HomeTimeline: FC = () => {
                         <TimelineItem>
                             <TimelineOppositeContent
                             sx={{
-                                py: '6px',
+                                py: '16px',
                                 px: 2
                             }}>
                                 <Typography

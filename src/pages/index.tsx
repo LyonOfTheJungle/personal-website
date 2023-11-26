@@ -23,7 +23,6 @@ const Page: NextPage = () => {
                 <HomeAboutMe/>
                 <HomeTimeline/>
                 <HomeProjects/>
-                <HomeFaqs/>
                 <HomeContact/>
                 <Footer/>
             </main>

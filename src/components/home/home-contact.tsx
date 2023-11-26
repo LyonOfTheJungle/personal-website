@@ -7,7 +7,7 @@ export const HomeContact: FC = () => {
         <Box
         id='contact'
         sx={{
-            backgroundColor: 'neutral.800',
+            //backgroundColor: 'neutral.800',
             backgroundRepeat: 'no-repeat',
             color: 'neutral.100',
             py: '60px'
@@ -19,8 +19,8 @@ export const HomeContact: FC = () => {
                 alignItems='center'>
                     
                     <Subtitle
-                    number='05'
-                    title="What's Next?"/>
+                    number='04'
+                    title="Contact"/>
 
                     <Typography
                     align='center'

@@ -1,6 +1,6 @@
-import { Box, IconButton, Stack, SvgIcon } from "@mui/material";
+import { Box, IconButton, Stack, SvgIcon, Tooltip } from "@mui/material";
 import { FC } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 
 export const SocialsButtons: FC = (props) => {
@@ -47,6 +47,26 @@ export const SocialsButtons: FC = (props) => {
                         <FaLinkedin/>
                     </SvgIcon>
                 </IconButton>
+            </Box>
+            <Box
+            {...props}
+            sx={{
+                backgroundColor: 'background.paper',
+                borderRadius: '50%',
+                boxShadow: 16
+            }}>
+                <Tooltip
+                title='lyon.momple@gmail.com'>
+                    <IconButton
+                    color='primary'
+                    size='large' 
+                    target='_blank'
+                    href='mailto:lyon.momple@gmail.com'>
+                        <SvgIcon>
+                            <FaEnvelope/>
+                        </SvgIcon>
+                    </IconButton>
+                </Tooltip>
             </Box>
         </Stack>
     );

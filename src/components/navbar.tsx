@@ -78,6 +78,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
         <Box
             component='header'
             sx={{
+                display: 'flex',
+                justifyContent: 'center',
                 left: 0,
                 position: 'fixed',
                 right: 0,
@@ -86,8 +88,10 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 zIndex: (theme) => theme.zIndex.appBar
             }}>
                 <Container
-                maxWidth='md'
+                maxWidth={false}
                 sx={{
+                    maxWidth: '750px',
+                    flexDirection: 'row',
                     backdropFilter: 'blur(6px)',
                     backgroundColor: 'transparent',
                     borderRadius: 2.5,
@@ -114,7 +118,10 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     <Stack
                     direction='row'
                     spacing={2}
-                    sx={{ height: NAVBAR_HEIGHT}}>
+                    sx={{ 
+                        height: NAVBAR_HEIGHT
+                    }}>
+
                         <Stack
                         direction='row'
                         spacing={2}>
