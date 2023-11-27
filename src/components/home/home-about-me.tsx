@@ -28,7 +28,7 @@ export const HomeAboutMe: FC = () => {
     >
       <Container maxWidth="lg">
         <Grid alignItems="center" container spacing={3}>
-          <Grid xs={12} md={6}>
+          <Grid xs={12} md={6} item={true}>
             <Box maxWidth="sm">
               
               <Subtitle
@@ -104,7 +104,8 @@ export const HomeAboutMe: FC = () => {
           <Grid
           xs={12} 
           md={6}
-          alignItems='center'>
+          alignItems='center'
+          item={true}>
             <Box
             ml={5}
             sx={{

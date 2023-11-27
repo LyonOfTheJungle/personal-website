@@ -62,6 +62,7 @@ export const HomeProjects: FC = () => {
 				alignContent='center'
 				spacing={3}>
 					<Grid
+					item={true}
 					xs={12}
 					md={6}>
 						<Stack
@@ -115,6 +116,7 @@ export const HomeProjects: FC = () => {
 						</Stack>
 					</Grid>
 					<Grid
+					item={true}
 					xs={12}
 					md={6}>
 						<Box
