@@ -125,10 +125,12 @@ export const HomeProjects: FC = () => {
 						}}>
 							<Image
 							src={image}
-							layout='fill'
-							objectFit='contain'
+							fill
 							alt='Image'
-							quality={100}>
+							quality={90}
+							style={{
+								objectFit: 'contain'
+							}}>
 							</Image>
 							
 						</Box>

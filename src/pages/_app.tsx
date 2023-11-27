@@ -5,6 +5,8 @@ import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { SocialsButtons } from '@/components/socials';
 
+import '@fontsource/cascadia-mono';
+
 const App = (props: AppProps) => {
     const { Component, pageProps } = props;
 

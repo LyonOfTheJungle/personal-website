@@ -87,8 +87,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 pt: 2,
                 zIndex: (theme) => theme.zIndex.appBar
             }}>
-                <Container
-                maxWidth={false}
+                <Box
                 sx={{
                     maxWidth: '750px',
                     flexDirection: 'row',
@@ -106,15 +105,15 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     })
                 }}
                 >
-                    
-                    <Box
-                    sx={{
-                        height: 4,
-                        background: '#04AA6D',
-                        width: (scrolledPercentage + '%'),
-                        borderRadius: 2.5
-                    }}/>
-
+                    <Container>
+                        <Box
+                        sx={{
+                            height: 4,
+                            background: '#04AA6D',
+                            width: (scrolledPercentage + '%'),
+                            borderRadius: 2.5
+                        }}/>
+                    </Container>
                     <Stack
                     direction='row'
                     spacing={2}
@@ -164,7 +163,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
                             </Box>
                         </Stack>
                     </Stack>
-                </Container>
+                </Box>
             </Box>
     );
 };
