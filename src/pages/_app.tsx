@@ -4,6 +4,7 @@ import { createMainTheme } from '@/theme';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { SocialsButtons } from '@/components/socials';
+import { Analytics } from '@vercel/analytics/react';
 
 import '@fontsource/cascadia-mono';
 
@@ -30,6 +31,7 @@ const App = (props: AppProps) => {
                     content="initial-scale=1, width=device-width"
                 />
             </Head>
+            <Analytics/>
             <CssBaseline/>
             <SocialsButtons/>
             {getLayout(<Component {...pageProps}/>)}
