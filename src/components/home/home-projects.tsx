@@ -65,6 +65,7 @@ export const HomeProjects: FC = () => {
 				alignContent='center'
 				spacing={3}>
 					<Grid
+					item={true}
 					xs={12}
 					md={6}>
 						<Stack
@@ -130,6 +131,7 @@ export const HomeProjects: FC = () => {
 						</Stack>
 					</Grid>
 					<Grid
+					item={true}
 					xs={12}
 					md={6}>
 						<Box
@@ -140,10 +142,12 @@ export const HomeProjects: FC = () => {
 						}}>
 							<Image
 							src={image}
-							layout='fill'
-							objectFit='contain'
+							fill
 							alt='Image'
-							quality={100}>
+							quality={90}
+							style={{
+								objectFit: 'contain'
+							}}>
 							</Image>
 							
 						</Box>

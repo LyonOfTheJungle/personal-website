@@ -1,5 +1,5 @@
 import { Box, Button, Chip, Container, Stack } from "@mui/material";
-import { useState, type FC, ReactNode, useCallback } from "react";
+import { useState, type FC, ReactNode, useCallback, useRef, useEffect } from "react";
 import NextLink from 'next/link';
 import { alpha } from "@mui/material";
 import { paths } from "@/paths";
@@ -51,6 +51,25 @@ export const Navbar: FC<NavbarProps> = (props) => {
     const [elevate, setElevate] = useState<boolean>(false);
     const offset = 64;
     const delay = 50;
+    
+    const [width, setWidth] = useState<number>(0);
+    const ref = useRef<HTMLDivElement>(null);
+    const [hideNavbar, setHideNavbar] = useState<boolean>(false);
+
+    useEffect(() => {
+        //if (ref === null || ref.current === null) return;
+        const navWidth = ref.current!.clientWidth;
+        const windowWidth = window.innerWidth;
+
+        console.log(navWidth);
+
+        if (windowWidth < navWidth) {
+            console.log('hide');
+            //setHideNavbar(true);
+        } else {
+            //setHideNavbar(false);
+        }
+    });
 
     const [scrolledPercentage, setScrolledPercentage] = useState<number>(0.0);
 
@@ -73,6 +92,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
     handler: handleWindowScroll,
     delay
   });
+  
 
     return (
         <Box
@@ -87,8 +107,9 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 pt: 2,
                 zIndex: (theme) => theme.zIndex.appBar
             }}>
-                <Container
-                maxWidth={false}
+                {!hideNavbar &&
+                <Box
+                ref={ref}
                 sx={{
                     maxWidth: '750px',
                     flexDirection: 'row',
@@ -106,15 +127,15 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     })
                 }}
                 >
-                    
-                    <Box
-                    sx={{
-                        height: 4,
-                        background: '#04AA6D',
-                        width: (scrolledPercentage + '%'),
-                        borderRadius: 2.5
-                    }}/>
-
+                    <Container>
+                        <Box
+                        sx={{
+                            height: 4,
+                            background: '#04AA6D',
+                            width: (scrolledPercentage + '%'),
+                            borderRadius: 2.5
+                        }}/>
+                    </Container>
                     <Stack
                     direction='row'
                     spacing={2}
@@ -164,7 +185,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
                             </Box>
                         </Stack>
                     </Stack>
-                </Container>
+                </Box>
+}
             </Box>
     );
 };
