@@ -1,15 +1,17 @@
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from "@mui/lab";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography, Button } from "@mui/material";
 import { FC, useState } from "react";
 import { Subtitle } from "./subtitles";
 import { useTheme } from "@emotion/react";
 import Image from 'next/image';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface Project {
 	id: string;
 	title: string;
 	description: string;
 	image: string;
+	url?: string; // Added optional url property
 }
 
 const projects: Project[] = [
@@ -30,6 +32,7 @@ const projects: Project[] = [
 		title: "Sarastar",
 		description: "Sarastar, a cutting-edge CAD software redefining design efficiency. This program stands out with its commitment to speed and robust performance, boasting a massive multi-threaded architecture. Inspired by industry giants like Blender, Godot, and Unreal Engine, Sarastar incorporates a sophisticated node-graph-based automation system, empowering end-users with unparalleled design capabilities. With a focus on speed, scalability, and user-friendly automation, Sarastar sets a new standard in CAD software, revolutionizing the way designers approach their projects",
 		image: "/assets/node-graph-editor.png",
+		url: "https://sarastar.com.au"
 	}
 ];
 
@@ -109,6 +112,18 @@ export const HomeProjects: FC = () => {
 										variant='body2'>
 											{project.description}
 										</Typography>
+										{project.url && ( // Conditionally render the button if url is present
+											<Button
+											variant='contained'
+											color='primary'
+											endIcon={<OpenInNewIcon />}
+											href={project.url}
+											target='_blank'
+											rel='noopener noreferrer'
+											sx={{ mt: 1 }}>
+												Visit Sarastar
+											</Button>
+										)}
 									</Box>
 								);
 							})}
