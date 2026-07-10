@@ -18,6 +18,8 @@ export const SocialsButtons: FC = (props) => {
             {...props}
             sx={{
                 backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
                 borderRadius: '50%',
                 boxShadow: 16
             }}>
@@ -35,6 +37,8 @@ export const SocialsButtons: FC = (props) => {
             {...props}
             sx={{
                 backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
                 borderRadius: '50%',
                 boxShadow: 16
             }}>
@@ -52,16 +56,18 @@ export const SocialsButtons: FC = (props) => {
             {...props}
             sx={{
                 backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
                 borderRadius: '50%',
                 boxShadow: 16
             }}>
                 <Tooltip
-                title='lyon.momple@gmail.com'>
+                title='lyon.momple@sarastar.com.au'>
                     <IconButton
                     color='primary'
-                    size='large' 
+                    size='large'
                     target='_blank'
-                    href='mailto:lyon.momple@gmail.com'>
+                    href='mailto:lyon.momple@sarastar.com.au'>
                         <SvgIcon>
                             <FaEnvelope/>
                         </SvgIcon>

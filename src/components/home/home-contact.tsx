@@ -19,7 +19,7 @@ export const HomeContact: FC = () => {
                 alignItems='center'>
                     
                     <Subtitle
-                    number='04'
+                    number='05'
                     title="Contact"/>
 
                     <Typography
@@ -45,9 +45,17 @@ export const HomeContact: FC = () => {
                 sx={{ mt: 3 }}>
                     <Button
                     component='a'
-                    href='mailto:lyon.momple@gmail.com'
+                    href='mailto:lyon.momple@sarastar.com.au'
                     target='_blank'
-                    variant='outlined'>
+                    variant='outlined'
+                    sx={{
+                        borderColor: 'primary.main',
+                        px: 4,
+                        '&:hover': {
+                            backgroundColor: 'primary.alpha8',
+                            boxShadow: '0 0 20px rgba(230, 180, 80, 0.2)'
+                        }
+                    }}>
                         Say Hello
                     </Button>
                 </Stack>

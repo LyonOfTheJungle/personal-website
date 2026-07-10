@@ -1,8 +1,6 @@
-import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from "@mui/lab";
-import { Box, Container, Grid, Stack, Typography, Button } from "@mui/material";
+import { Box, Chip, Container, Grid, Stack, Typography, Button } from "@mui/material";
 import { FC, useState } from "react";
 import { Subtitle } from "./subtitles";
-import { useTheme } from "@emotion/react";
 import Image from 'next/image';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
@@ -11,33 +9,36 @@ interface Project {
 	title: string;
 	description: string;
 	image: string;
-	url?: string; // Added optional url property
+	tags: string[];
+	url?: string;
 }
 
 const projects: Project[] = [
 	{
 		id: "ibt-module",
 		title: "IBT Deswik Module",
-		description: "IBT Mining gained a significant edge with a custom Deswik module that simplifies surveyed hole data processing. Previously, the tedious task involved transferring data between Deswik and multiple Excel sheets. Now, everything is seamlessly handled within Deswik.CAD, reducing processing time to seconds. This streamlined workflow enhances efficiency, allowing IBT Mining to focus on strategic decisions rather than data management complexities",
+		description: "A custom Deswik module that simplifies surveyed hole data processing for IBT Mining. What previously meant shuffling data between Deswik and multiple Excel sheets is now handled entirely within Deswik.CAD, cutting processing time down to seconds.",
 		image: "/assets/ibt-module-combined.png",
+		tags: ["Deswik", "C#"],
 	},
 	{
 		id: "deswik-process-maps",
 		title: "Deswik Process Maps",
-		description: "My Deswik process maps redefine efficiency in mining operations. By crafting modules that connect seamlessly to remote databases, I've eliminated the need for laborious Excel exports, streamlining data uploads effortlessly. Additionally, my innovative process map ensures reliable export of drill holes to ring setouts for surveys, saving valuable time by eliminating the 20-minute data processing tasks. Furthermore, I've designed modules that automate the setup of drill holes for straightforward timing plans in underground spaces. These customized Deswik process maps not only enhance precision but also revolutionize workflows, ensuring a significant boost in productivity across various facets of mining operations",
+		description: "Process maps and modules that connect Deswik directly to remote databases, eliminating laborious Excel exports. They reliably export drill holes to ring setouts for surveys and automate drill hole setup for underground timing plans, removing 20-minute manual processing tasks.",
 		image: "/assets/deswik-process-maps.png",
+		tags: ["Deswik", "SQL"],
 	},
 	{
 		id: "sarastar",
 		title: "Sarastar",
-		description: "Sarastar, a cutting-edge CAD software redefining design efficiency. This program stands out with its commitment to speed and robust performance, boasting a massive multi-threaded architecture. Inspired by industry giants like Blender, Godot, and Unreal Engine, Sarastar incorporates a sophisticated node-graph-based automation system, empowering end-users with unparalleled design capabilities. With a focus on speed, scalability, and user-friendly automation, Sarastar sets a new standard in CAD software, revolutionizing the way designers approach their projects",
+		description: "A CAD package built for speed, with a heavily multi-threaded architecture. Inspired by Blender, Godot, and Unreal Engine, Sarastar features a node-graph-based automation system that gives end-users powerful design and automation capabilities.",
 		image: "/assets/node-graph-editor.png",
+		tags: ["C#", "CAD", "Node Graphs"],
 		url: "https://sarastar.com.au"
 	}
 ];
 
 export const HomeProjects: FC = () => {
-	const theme = useTheme();
 	const [activeProject, setActiveProject] = useState<number>(0);
 	const project = projects[activeProject];
 	const image = project.image;
@@ -55,7 +56,7 @@ export const HomeProjects: FC = () => {
 				spacing={2}
 				sx={{ mb: 8 }}>
 					<Subtitle
-					number='03'
+					number='04'
 					title='Projects'/>
 				</Stack>
 				<Grid
@@ -78,6 +79,11 @@ export const HomeProjects: FC = () => {
 									key={project.id}
 									onClick={() => setActiveProject(index)}
 									sx={{
+										backgroundColor: 'background.paper',
+										border: '1px solid',
+										borderColor: 'divider',
+										borderLeft: '3px solid',
+										borderLeftColor: 'divider',
 										borderRadius: 2.5,
 										color: 'neutral.400',
 										cursor: 'pointer',
@@ -90,14 +96,16 @@ export const HomeProjects: FC = () => {
 											}
 										),
 										...(isActive && {
-											backgroundColor: 'primary.alpha12',
-											boxShadow: (theme) => `${theme.palette.primary.main} 0 0 0 1px`,
+											borderColor: 'primary.main',
+											borderLeftColor: 'primary.main',
+											boxShadow: '0 0 24px rgba(230, 180, 80, 0.12)',
 											color: 'common.white'
 										}),
 										'&:hover': {
 											...(!isActive && {
 												backgroundColor: 'primary.alpha4',
-												boxShadow: (theme) => `${theme.palette.primary.main} 0 0 0 1px`,
+												borderColor: 'primary.alpha50',
+												borderLeftColor: 'primary.alpha50',
 												color: 'common.white'
 											})
 										}
@@ -113,7 +121,24 @@ export const HomeProjects: FC = () => {
 										variant='body2'>
 											{project.description}
 										</Typography>
-										{project.url && ( // Conditionally render the button if url is present
+										<Stack
+										direction='row'
+										spacing={1}
+										sx={{ mt: 2, flexWrap: 'wrap', gap: 1 }}
+										useFlexGap>
+											{project.tags.map((tag) => (
+												<Chip
+												key={tag}
+												label={tag}
+												size='small'
+												variant='outlined'
+												sx={{
+													borderColor: 'primary.alpha30',
+													color: 'inherit'
+												}}/>
+											))}
+										</Stack>
+										{project.url && (
 											<Button
 											variant='contained'
 											color='primary'
@@ -121,7 +146,7 @@ export const HomeProjects: FC = () => {
 											href={project.url}
 											target='_blank'
 											rel='noopener noreferrer'
-											sx={{ mt: 1 }}>
+											sx={{ mt: 2 }}>
 												Visit Sarastar
 											</Button>
 										)}
@@ -143,13 +168,13 @@ export const HomeProjects: FC = () => {
 							<Image
 							src={image}
 							fill
-							alt='Image'
+							alt={project.title}
 							quality={90}
 							style={{
 								objectFit: 'contain'
 							}}>
 							</Image>
-							
+
 						</Box>
 					</Grid>
 				</Grid>

@@ -1,5 +1,5 @@
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from "@mui/lab";
-import { Box, Container, SvgIcon, Tooltip, Typography } from "@mui/material";
+import { Box, Container, Tooltip, Typography, useTheme } from "@mui/material";
 import { FC } from "react";
 import { StBarbaraLogo } from "../st-barbara-logo";
 import { GenesisMineralsLogo } from "../genesis-minerals-logo";
@@ -16,6 +16,8 @@ interface Experience {
 
 export const HomeTimeline: FC = () => {
 
+    const theme = useTheme();
+
     const monthDiff = (d1: Date, d2: Date) => {
         var months;
         months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -25,6 +27,7 @@ export const HomeTimeline: FC = () => {
     }
 
     const currentMonths = monthDiff(new Date('06-01-2023'), new Date());
+    const currentYears = Math.floor(currentMonths / 12);
 
     return (
         <Box
@@ -37,7 +40,7 @@ export const HomeTimeline: FC = () => {
                 <Box
                 maxWidth='lg'>
                     <Subtitle
-                    number='02'
+                    number='03'
                     title='Experience'/>
                     <Timeline>
 
@@ -48,7 +51,8 @@ export const HomeTimeline: FC = () => {
                             }}>
                                 <Typography
                                 variant='h4'
-                                align='center'>
+                                align='center'
+                                sx={{ fontSize: { xs: '1.1rem', sm: '1.5rem', md: '2rem' } }}>
                                     Work Experience
                                 </Typography>
                             </TimelineContent>
@@ -58,7 +62,8 @@ export const HomeTimeline: FC = () => {
                             }}>
                                 <Typography
                                 variant='h4'
-                                align='center'>
+                                align='center'
+                                sx={{ fontSize: { xs: '1.1rem', sm: '1.5rem', md: '2rem' } }}>
                                     Education
                                 </Typography>
                             </TimelineOppositeContent>
@@ -78,11 +83,18 @@ export const HomeTimeline: FC = () => {
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <Tooltip title='University of Western Australia' placement='top'>
-                                    <TimelineDot color='primary' variant='outlined'>
-                                        <UWALogo color='#16B364'/>
+                                    <TimelineDot
+                                    color='primary'
+                                    variant='outlined'
+                                    sx={{
+                                        borderColor: 'primary.main',
+                                        backgroundColor: 'background.default',
+                                        boxShadow: `0 0 0 4px ${theme.palette.primary.alpha12}`
+                                    }}>
+                                        <UWALogo color={theme.palette.primary.main}/>
                                     </TimelineDot>
                                 </Tooltip>
-                                <TimelineConnector/>
+                                <TimelineConnector sx={{ backgroundColor: 'primary.alpha30' }}/>
                             </TimelineSeparator>
                             <TimelineContent
                             sx={{
@@ -110,11 +122,18 @@ export const HomeTimeline: FC = () => {
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <Tooltip title='University of Western Australia' placement='top'>
-                                    <TimelineDot color='primary' variant='outlined'>
-                                        <UWALogo color='#16B364'/>
+                                    <TimelineDot
+                                    color='primary'
+                                    variant='outlined'
+                                    sx={{
+                                        borderColor: 'primary.main',
+                                        backgroundColor: 'background.default',
+                                        boxShadow: `0 0 0 4px ${theme.palette.primary.alpha12}`
+                                    }}>
+                                        <UWALogo color={theme.palette.primary.main}/>
                                     </TimelineDot>
                                 </Tooltip>
-                                <TimelineConnector/>
+                                <TimelineConnector sx={{ backgroundColor: 'primary.alpha30' }}/>
                             </TimelineSeparator>
                             <TimelineContent
                             sx={{
@@ -141,11 +160,18 @@ export const HomeTimeline: FC = () => {
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <Tooltip title='Westgold Resources' placement='top'>
-                                    <TimelineDot color='primary' variant='outlined'>
-                                        <WestgoldLogo color1='#16B364' color2='#78e3ae'/>
+                                    <TimelineDot
+                                    color='primary'
+                                    variant='outlined'
+                                    sx={{
+                                        borderColor: 'primary.main',
+                                        backgroundColor: 'background.default',
+                                        boxShadow: `0 0 0 4px ${theme.palette.primary.alpha12}`
+                                    }}>
+                                        <WestgoldLogo color1={theme.palette.primary.main} color2={theme.palette.primary.light}/>
                                     </TimelineDot>
                                 </Tooltip>
-                                <TimelineConnector/>
+                                <TimelineConnector sx={{ backgroundColor: 'primary.alpha30' }}/>
                             </TimelineSeparator>
                             <TimelineContent
                             sx={{
@@ -173,11 +199,18 @@ export const HomeTimeline: FC = () => {
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <Tooltip title='St Barbara Limited' placement='top'>
-                                    <TimelineDot color='primary' variant='outlined'>
-                                        <StBarbaraLogo color='#16B364'/>
+                                    <TimelineDot
+                                    color='primary'
+                                    variant='outlined'
+                                    sx={{
+                                        borderColor: 'primary.main',
+                                        backgroundColor: 'background.default',
+                                        boxShadow: `0 0 0 4px ${theme.palette.primary.alpha12}`
+                                    }}>
+                                        <StBarbaraLogo color={theme.palette.primary.main}/>
                                     </TimelineDot>
                                 </Tooltip>
-                                <TimelineConnector/>
+                                <TimelineConnector sx={{ backgroundColor: 'primary.alpha30' }}/>
                             </TimelineSeparator>
                             <TimelineContent
                             sx={{
@@ -200,13 +233,20 @@ export const HomeTimeline: FC = () => {
                             }}>
                                 <Typography
                                 variant='subtitle1'>
-                                    Mining Engineer - Gwalia
+                                    Planning Engineer - Gwalia
                                 </Typography>
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <Tooltip title='Genesis Minerals' placement='top'>
-                                    <TimelineDot color='primary' variant='outlined'>
-                                        <GenesisMineralsLogo color1='#16B364' color2='#78e3ae'/>
+                                    <TimelineDot
+                                    color='primary'
+                                    variant='outlined'
+                                    sx={{
+                                        borderColor: 'primary.main',
+                                        backgroundColor: 'background.default',
+                                        boxShadow: `0 0 0 4px ${theme.palette.primary.alpha12}`
+                                    }}>
+                                        <GenesisMineralsLogo color1={theme.palette.primary.main} color2={theme.palette.primary.light}/>
                                     </TimelineDot>
                                 </Tooltip>
                             </TimelineSeparator>
@@ -218,7 +258,7 @@ export const HomeTimeline: FC = () => {
                                 <Typography
                                 variant='subtitle1'
                                 color='neutral.400'>
-                                    July 2023 - Current ({currentMonths} months)
+                                    July 2023 - Current ({currentYears}+ years)
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>

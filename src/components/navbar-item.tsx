@@ -1,6 +1,5 @@
-import { Box, ButtonBase, Typography } from "@mui/material";
-import { useState, type FC, type ReactNode, useCallback } from "react";
-import PropTypes from 'prop-types';
+import { Box, ButtonBase } from "@mui/material";
+import { type FC, type ReactNode } from "react";
 import NextLink from 'next/link';
 import { Subtitle } from "./home/subtitles";
 
@@ -10,26 +9,11 @@ interface NavbarItemProps {
     path?: string;
     title: string;
     number: string;
+    onClick?: () => void;
 }
 
 export const NavbarItem: FC<NavbarItemProps> = (props) => {
-    const { active, children, path, title, number } = props;
-
-    const [open, setOpen] = useState<boolean>(false);
-
-    const handleMouseEnter = useCallback(
-        () => {
-            setOpen(true);
-        },
-        []
-    );
-
-    const handleMouseLeave = useCallback(
-        () => {
-            setOpen(false);
-        },
-        []
-    );
+    const { active, path, title, number, onClick } = props;
 
     let linkProps: any = undefined;
 
@@ -60,6 +44,7 @@ export const NavbarItem: FC<NavbarItemProps> = (props) => {
         >
             <ButtonBase
             disableRipple
+            onClick={onClick}
             sx={{
                 alignItems: 'center',
                 borderRadius: 1,
@@ -78,15 +63,9 @@ export const NavbarItem: FC<NavbarItemProps> = (props) => {
             {...linkProps}>
                 <Subtitle
                 number={number}
-                title={title}/>
+                title={title}
+                underline={false}/>
             </ButtonBase>
         </Box>
     );
-};
-
-NavbarItem.propTypes = {
-    active: PropTypes.bool,
-    children: PropTypes.any,
-    path: PropTypes.string,
-    title: PropTypes.string.isRequired
 };

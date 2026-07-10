@@ -1,11 +1,11 @@
-import { Box, Button, Chip, Container, Stack } from "@mui/material";
-import { useState, type FC, ReactNode, useCallback, useRef, useEffect } from "react";
-import NextLink from 'next/link';
+import { Box, Container, Drawer, IconButton, Stack, SvgIcon, useMediaQuery } from "@mui/material";
+import type { Theme } from "@mui/material";
+import { useState, type FC, ReactNode, useCallback } from "react";
 import { alpha } from "@mui/material";
-import { paths } from "@/paths";
 import { usePathname } from "next/navigation";
 import { NavbarItem } from "./navbar-item";
 import { useWindowScroll } from "@/hooks/use-window-scroll";
+import { FaBars } from "react-icons/fa6";
 
 interface Item {
     disabled?: boolean;
@@ -20,56 +20,39 @@ const items: Item[] = [
         title: 'About Me',
         path: '/#about-me',
         number: '01',
-    }, 
+    },
+    {
+        title: 'Skills',
+        path: '/#skills',
+        number: '02',
+    },
     {
         title: 'Experience',
         path: '/#timeline',
-        number: '02',
+        number: '03',
     },
     {
         title: 'Projects',
         path: '/#projects',
-        number: '03',
-    }, 
+        number: '04',
+    },
     {
         title: 'Contact',
         path: '/#contact',
-        number: '04',
+        number: '05',
     }
 ];
 
 const NAVBAR_HEIGHT: number = 64;
 
-interface NavbarProps {
-    onMobileNavOpen?: () => void;
-};
-
-export const Navbar: FC<NavbarProps> = (props) => {
-    const { onMobileNavOpen } = props;
-
+export const Navbar: FC = () => {
     const pathname = usePathname();
     const [elevate, setElevate] = useState<boolean>(false);
     const offset = 64;
     const delay = 50;
-    
-    const [width, setWidth] = useState<number>(0);
-    const ref = useRef<HTMLDivElement>(null);
-    const [hideNavbar, setHideNavbar] = useState<boolean>(false);
 
-    useEffect(() => {
-        //if (ref === null || ref.current === null) return;
-        const navWidth = ref.current!.clientWidth;
-        const windowWidth = window.innerWidth;
-
-        console.log(navWidth);
-
-        if (windowWidth < navWidth) {
-            console.log('hide');
-            //setHideNavbar(true);
-        } else {
-            //setHideNavbar(false);
-        }
-    });
+    const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
     const [scrolledPercentage, setScrolledPercentage] = useState<number>(0.0);
 
@@ -77,7 +60,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
         (): void => {
             var height = document.body.scrollHeight - document.documentElement.clientHeight;
             setScrolledPercentage(window.scrollY / height * 100);
-        
+
           if (window.scrollY > offset) {
             setElevate(true);
           } else {
@@ -87,12 +70,82 @@ export const Navbar: FC<NavbarProps> = (props) => {
         []
       );
 
-      
-  useWindowScroll({
-    handler: handleWindowScroll,
-    delay
-  });
-  
+    useWindowScroll({
+        handler: handleWindowScroll,
+        delay
+    });
+
+    const renderItems = (onNavigate?: () => void) => items.map((item) => {
+        const checkPath = !!(item.path && pathname);
+        const partialMatch = checkPath ? pathname.includes(item.path!) : false;
+        const exactMatch = checkPath ? pathname === item.path : false;
+        const active = item.children ? partialMatch : exactMatch;
+
+        return (
+            <NavbarItem
+            active={active}
+            key={item.title}
+            path={item.path}
+            title={item.title}
+            number={item.number}
+            onClick={onNavigate}
+            >
+                {item.children}
+            </NavbarItem>
+        );
+    });
+
+    if (mdDown) {
+        return (
+            <Box
+            component='header'
+            sx={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                p: 2,
+                zIndex: (theme) => theme.zIndex.appBar
+            }}>
+                <IconButton
+                aria-label='Open navigation menu'
+                onClick={() => setDrawerOpen(true)}
+                sx={{
+                    color: 'primary.main',
+                    backdropFilter: 'blur(6px)',
+                    backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.90),
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: 2.5
+                }}>
+                    <SvgIcon>
+                        <FaBars/>
+                    </SvgIcon>
+                </IconButton>
+                <Drawer
+                anchor='right'
+                open={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+                PaperProps={{
+                    sx: {
+                        backgroundColor: 'background.paper',
+                        width: 260
+                    }
+                }}>
+                    <Stack
+                    component='ul'
+                    spacing={1}
+                    sx={{
+                        listStyle: 'none',
+                        m: 0,
+                        p: 2,
+                        pt: 4
+                    }}>
+                        {renderItems(() => setDrawerOpen(false))}
+                    </Stack>
+                </Drawer>
+            </Box>
+        );
+    }
 
     return (
         <Box
@@ -107,22 +160,22 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 pt: 2,
                 zIndex: (theme) => theme.zIndex.appBar
             }}>
-                {!hideNavbar &&
                 <Box
-                ref={ref}
                 sx={{
-                    maxWidth: '750px',
+                    maxWidth: 'fit-content',
                     flexDirection: 'row',
                     backdropFilter: 'blur(6px)',
                     backgroundColor: 'transparent',
                     borderRadius: 2.5,
                     boxShadow: 'none',
-                    transition: (theme) => theme.transitions.create('box-shadow, background-color', {
+                    border: '1px solid transparent',
+                    transition: (theme) => theme.transitions.create('box-shadow, background-color, border-color', {
                         easing: theme.transitions.easing.easeInOut,
                         duration: 200
                     }),
                     ...(elevate && {
                         backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.90),
+                        borderColor: 'divider',
                         boxShadow: 8
                     })
                 }}
@@ -131,7 +184,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
                         <Box
                         sx={{
                             height: 4,
-                            background: '#04AA6D',
+                            background: (theme) => `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
                             width: (scrolledPercentage + '%'),
                             borderRadius: 2.5
                         }}/>
@@ -139,10 +192,9 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     <Stack
                     direction='row'
                     spacing={2}
-                    sx={{ 
+                    sx={{
                         height: NAVBAR_HEIGHT
                     }}>
-
                         <Stack
                         direction='row'
                         spacing={2}>
@@ -163,30 +215,12 @@ export const Navbar: FC<NavbarProps> = (props) => {
                                     m: 0,
                                     p: 0
                                 }}>
-                                    {items.map((item) => {
-                                            const checkPath = !!(item.path && pathname);
-                                            const partialMatch = checkPath ? pathname.includes(item.path!) : false;
-                                            const exactMatch = checkPath ? pathname === item.path : false;
-                                            const active = item.children ? partialMatch : exactMatch;
-
-                                            return (
-                                                <NavbarItem
-                                                active={active}
-                                                key={item.title}
-                                                path={item.path}
-                                                title={item.title}
-                                                number={item.number}
-                                                >
-                                                    {item.children}
-                                                </NavbarItem>
-                                            );
-                                        })}
+                                    {renderItems()}
                                 </Stack>
                             </Box>
                         </Stack>
                     </Stack>
                 </Box>
-}
             </Box>
     );
 };

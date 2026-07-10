@@ -14,17 +14,26 @@ const withAlphas = (color: PaletteColor): PaletteColor => {
 };
 
 export const neutral: NeutralColors = {
-  50: '#F8F9FA',
-  100: '#F3F4F6',
-  200: '#E5E7EB',
-  300: '#D2D6DB',
-  400: '#9DA4AE',
-  500: '#6C737F',
-  600: '#4D5761',
-  700: '#2F3746',
-  800: '#1C2536',
-  900: '#111927'
+  50: '#F7F6F3',
+  100: '#EDEBE6',
+  200: '#DDD9D0',
+  300: '#C3BFB4',
+  400: '#98948A',
+  500: '#6F6B62',
+  600: '#4F4C45',
+  700: '#33363D',
+  800: '#1B1F25',
+  900: '#181B21'
 };
+
+export const gold = withAlphas({
+  lightest: '#FBF4E3',
+  light: '#F3DFA6',
+  main: '#E6B450',
+  dark: '#B8862B',
+  darkest: '#7A5A1C',
+  contrastText: '#14171C'
+});
 
 export const blue = withAlphas({
   lightest: '#F5F8FF',

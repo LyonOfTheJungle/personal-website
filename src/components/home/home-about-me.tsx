@@ -4,20 +4,13 @@ import {
   Container,
   Typography,
   Grid,
-  useTheme,
-  SvgIcon,
-  Stack,
 } from "@mui/material";
 import { FC } from "react";
 import NextLink from "next/link";
-import { FaChevronRight } from "react-icons/fa6";
+import Image from "next/image";
 import { Subtitle } from "./subtitles";
 
 export const HomeAboutMe: FC = () => {
-    const theme = useTheme();
-
-    const image = 'assets/mid-shot.jpg';
-
   return (
     <Box
     id='about-me'
@@ -30,15 +23,15 @@ export const HomeAboutMe: FC = () => {
         <Grid alignItems="center" container spacing={3}>
           <Grid xs={12} md={6} item={true}>
             <Box maxWidth="sm">
-              
+
               <Subtitle
               number='01'
               title='About Me'/>
-              
+
               <Typography color="neutral.400" variant="subtitle1">
-                Hello! My name is Lyon Momple, a Drill and Blast Engineer who
+                Hello! My name is Lyon Momple, a Planning Engineer who
                 thrives on blending engineering expertise with a love for
-                coding. By day, I am a Drill and Blast engineer working at
+                coding. By day, I am a Planning Engineer working at
                 the&nbsp;
                 <Link
                   component={NextLink}
@@ -48,8 +41,10 @@ export const HomeAboutMe: FC = () => {
                 >
                   Gwalia Deeps
                 </Link>
-                &nbsp;mine site in Leonora. During my breaks, I delve into
-                developing Deswik Modules, aiming to enhance productivity.
+                &nbsp;gold mine in Leonora, with experience across scheduling,
+                backfill, ventilation, and drill and blast engineering. During
+                my breaks, I delve into developing Deswik Modules, aiming to
+                enhance productivity.
               </Typography>
               <Typography
                 color="neutral.400"
@@ -66,10 +61,9 @@ export const HomeAboutMe: FC = () => {
                 variant="subtitle1"
                 sx={{ mt: 2 }}
               >
-                I am also currently developing an alternative to Deswik. Which
-                resembles CAD, but with a focus on high multi-threading and
-                robust design capabilities. This tool incorporates a potent
-                node-graph based automation system for end-users, drawing
+                I am also building Sarastar, a CAD-style design tool focused on
+                heavy multithreading and robust design capabilities. It features
+                a potent node-graph automation system for end-users, drawing
                 inspiration from the likes of&nbsp;
                 <Link
                   component={NextLink}
@@ -102,24 +96,44 @@ export const HomeAboutMe: FC = () => {
             </Box>
           </Grid>
           <Grid
-          xs={12} 
+          xs={12}
           md={6}
           alignItems='center'
           item={true}>
             <Box
-            ml={5}
             sx={{
-                '& img': {
-                    width: '100%'
-                },
+                ml: { xs: 0, md: 5 },
+                mr: '12px',
+                position: 'relative',
                 borderRadius: 2.5,
-                color: 'neutral.400',
                 p: 3,
-                backgroundColor: 'primary.alpha12',
-                boxShadow: (theme) => `${theme.palette.primary.main} 0 0 0 1px`
+                backgroundColor: 'primary.alpha8',
+                boxShadow: (theme) => `${theme.palette.primary.alpha50} 0 0 0 1px`,
+                '& img': {
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '8px',
+                    display: 'block'
+                },
+                '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 12,
+                    left: 12,
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: 2.5,
+                    border: '1px solid',
+                    borderColor: 'primary.alpha30',
+                    zIndex: -1
+                }
             }}
             >
-                <img src={image}/>
+                <Image
+                src='/assets/mid-shot.jpg'
+                alt='Lyon Momple'
+                width={500}
+                height={500}/>
             </Box>
           </Grid>
         </Grid>

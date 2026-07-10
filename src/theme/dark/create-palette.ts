@@ -22,10 +22,10 @@ export const createPalette = (config: Config): PaletteOptions => {
       selected: alpha(neutral[100], 0.12)
     },
     background: {
-      default: contrast === 'high' ? '#0B0F19' : '#0E1320',
+      default: contrast === 'high' ? '#0F1114' : '#14171C',
       paper: neutral[900]
     },
-    divider: '#2D3748',
+    divider: '#2C2F36',
     error,
     info,
     mode: 'dark',
@@ -33,9 +33,9 @@ export const createPalette = (config: Config): PaletteOptions => {
     primary: getPrimary(colorPreset),
     success,
     text: {
-      primary: '#EDF2F7',
-      secondary: '#A0AEC0',
-      disabled: 'rgba(255, 255, 255, 0.48)'
+      primary: '#F2EFE9',
+      secondary: '#A8A29A',
+      disabled: 'rgba(242, 239, 233, 0.45)'
     },
     warning
   };
