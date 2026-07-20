@@ -1,7 +1,6 @@
-import { Box, ButtonBase } from "@mui/material";
+import { Box, ButtonBase, Stack, Typography } from "@mui/material";
 import { type FC, type ReactNode } from "react";
 import NextLink from 'next/link';
-import { Subtitle } from "./home/subtitles";
 
 interface NavbarItemProps {
     active?: boolean;
@@ -61,10 +60,23 @@ export const NavbarItem: FC<NavbarItemProps> = (props) => {
                 })
             }}
             {...linkProps}>
-                <Subtitle
-                number={number}
-                title={title}
-                underline={false}/>
+                <Stack
+                alignItems='center'
+                direction='row'
+                spacing={0.75}>
+                    <Typography
+                    variant='caption'
+                    color='primary.main'
+                    sx={{ fontFamily: '\'Cascadia Mono\', monospace' }}>
+                        {number}.
+                    </Typography>
+                    <Typography
+                    variant='subtitle2'
+                    color='inherit'
+                    sx={{ whiteSpace: 'nowrap' }}>
+                        {title}
+                    </Typography>
+                </Stack>
             </ButtonBase>
         </Box>
     );

@@ -22,7 +22,7 @@ export const createPalette = (config: Config): PaletteOptions => {
       selected: alpha(neutral[100], 0.12)
     },
     background: {
-      default: contrast === 'high' ? '#0F1114' : '#14171C',
+      default: contrast === 'high' ? '#171B21' : '#1D2129',
       paper: neutral[900]
     },
     divider: '#2C2F36',

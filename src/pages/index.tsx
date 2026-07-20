@@ -1,12 +1,14 @@
+import { Box } from "@mui/material";
 import { Footer } from "@/components/footer";
 import { HomeAboutMe } from "@/components/home/home-about-me";
 import { HomeContact } from "@/components/home/home-contact";
 import { HomeProjects } from "@/components/home/home-projects";
-import { HomeSkills } from "@/components/home/home-skills";
+import { HomeWhatIDo } from "@/components/home/home-what-i-do";
 import { HomeTimeline } from "@/components/home/home-timeline";
 import { HomeTitle } from "@/components/home/home-title";
 import { Navbar } from "@/components/navbar";
-import { SectionDivider } from "@/components/section-divider";
+import { PatternBackground } from "@/components/pattern-background";
+import { Reveal } from "@/components/reveal";
 import { NextPage } from "next";
 import Head from "next/head";
 
@@ -19,16 +21,27 @@ const Page: NextPage = () => {
                 </title>
             </Head>
             <main>
+                <PatternBackground/>
                 <Navbar/>
-                <HomeTitle/>
-                <HomeAboutMe/>
-                <HomeSkills/>
-                <SectionDivider variant='strata'/>
-                <HomeTimeline/>
-                <HomeProjects/>
-                <SectionDivider variant='drill'/>
-                <HomeContact/>
-                <Footer/>
+                <Box>
+                    <HomeTitle/>
+                    <Reveal>
+                        <HomeAboutMe/>
+                    </Reveal>
+                    <Reveal>
+                        <HomeWhatIDo/>
+                    </Reveal>
+                    <Reveal>
+                        <HomeTimeline/>
+                    </Reveal>
+                    <Reveal>
+                        <HomeProjects/>
+                    </Reveal>
+                    <Reveal>
+                        <HomeContact/>
+                    </Reveal>
+                    <Footer/>
+                </Box>
             </main>
         </>
     )

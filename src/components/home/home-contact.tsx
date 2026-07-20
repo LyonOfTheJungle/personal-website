@@ -1,64 +1,64 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { Subtitle } from "./subtitles";
+import { bandCardSx } from "../card-styles";
+import { ContourBackdrop } from "../contour-backdrop";
 
 export const HomeContact: FC = () => {
     return (
         <Box
         id='contact'
         sx={{
-            //backgroundColor: 'neutral.800',
-            backgroundRepeat: 'no-repeat',
-            color: 'neutral.100',
             py: '60px'
         }}>
             <Container
             maxWidth='lg'>
-                <Stack
-                spacing={2}
-                alignItems='center'>
-                    
-                    <Subtitle
-                    number='05'
-                    title="Contact"/>
+                <Box
+                sx={[
+                    bandCardSx,
+                    {
+                        position: 'relative',
+                        px: { xs: 3, md: 8 },
+                        py: { xs: 6, md: 8 }
+                    }
+                ]}>
+                    <ContourBackdrop sx={{ bottom: -200, left: -220 }}/>
+                    <Stack
+                    spacing={2}
+                    alignItems='center'
+                    sx={{ position: 'relative', zIndex: 1 }}>
 
-                    <Typography
-                    align='center'
-                    color='inherit'
-                    variant='h3'>
-                        Get In Touch
-                    </Typography>
-                    <Typography
-                    align='center'
-                    color='inherit'
-                    variant='subtitle1'>
-                        Feel free to reach out anytime for new opportunities or just to say hello. 
-                        <br/>
-                        I&apos;ll do my best to respond to your questions or messages promptly!
-                    </Typography>
-                </Stack>
-                <Stack
-                alignItems='center'
-                direction='row'
-                justifyContent='center'
-                spacing={2}
-                sx={{ mt: 3 }}>
-                    <Button
-                    component='a'
-                    href='mailto:lyon.momple@sarastar.com.au'
-                    target='_blank'
-                    variant='outlined'
-                    sx={{
-                        borderColor: 'primary.main',
-                        px: 4,
-                        '&:hover': {
-                            backgroundColor: 'primary.alpha8',
-                            boxShadow: '0 0 20px rgba(230, 180, 80, 0.2)'
-                        }
-                    }}>
-                        Say Hello
-                    </Button>
-                </Stack>
+                        <Subtitle
+                        number='05'
+                        title='Get In Touch'
+                        align='center'
+                        sx={{ mb: 0 }}/>
+
+                        <Typography
+                        align='center'
+                        color='neutral.400'
+                        variant='subtitle1'>
+                            Feel free to reach out anytime for new opportunities or just to say hello.
+                            <br/>
+                            I&apos;ll do my best to respond to your questions or messages promptly!
+                        </Typography>
+                    </Stack>
+                    <Stack
+                    alignItems='center'
+                    justifyContent='center'
+                    sx={{ mt: 4 }}>
+                        <Button
+                        component='a'
+                        href='mailto:lyon.momple@sarastar.com.au'
+                        target='_blank'
+                        variant='contained'
+                        color='primary'
+                        size='large'
+                        sx={{ px: 5 }}>
+                            Say Hello
+                        </Button>
+                    </Stack>
+                </Box>
             </Container>
         </Box>
     )

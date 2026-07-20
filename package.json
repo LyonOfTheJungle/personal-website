@@ -14,11 +14,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/inter": "^5.2.8",
-    "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource/cascadia-mono": "^4.2.1",
     "@mui/icons-material": "^5.14.17",
-    "@mui/lab": "^5.0.0-alpha.153",
     "@mui/material": "^5.14.17",
     "@types/lodash": "^4.14.202",
     "@vercel/analytics": "^1.1.1",

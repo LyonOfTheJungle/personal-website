@@ -3,13 +3,11 @@ import {
     Box, ButtonBase, Stack, SvgIcon, Typography
 } from '@mui/material';
 import { FaGithub } from 'react-icons/fa6';
-import { SectionDivider } from './section-divider';
 
 export const Footer: FC = () => {
     const path: string = 'https://github.com/LyonOfTheJungle/personal-website';
     return (
     <Box id='footer'>
-        <SectionDivider variant='drill'/>
         <Box
         sx={{
             py: '30px',

@@ -22,8 +22,8 @@ const items: Item[] = [
         number: '01',
     },
     {
-        title: 'Skills',
-        path: '/#skills',
+        title: 'What I Do',
+        path: '/#what-i-do',
         number: '02',
     },
     {

@@ -1,52 +1,43 @@
-import { Box, Stack, SvgIcon, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material";
 import { FC } from "react";
-import { FaChevronRight } from "react-icons/fa6";
 
 interface SubtitleProps {
     number: string;
     title: string;
-    underline?: boolean;
+    align?: 'left' | 'center';
+    sx?: SxProps<Theme>;
 };
 
 export const Subtitle: FC<SubtitleProps> = (props) => {
-    const { number, title, underline = true } = props;
-
-    const heading = (
-        <Stack
-        alignItems='center'
-        direction='row'
-        spacing={0.1}>
-            <SvgIcon sx={{ fontSize: 18, color: 'primary.main' }}>
-                <FaChevronRight/>
-            </SvgIcon>
-            <Typography
-            variant="subtitle1"
-            color="primary.main"
-            sx={{ whiteSpace: 'nowrap' }}>
-                {number}.&nbsp;
-                <Typography
-                color="text.primary"
-                variant="subtitle1"
-                component="span">
-                    {title}
-                </Typography>
-            </Typography>
-        </Stack>
-    );
-
-    if (!underline) {
-        return heading;
-    }
+    const { number, title, align = 'left', sx } = props;
 
     return (
-        <Box sx={{ mb: 3 }}>
-            {heading}
+        <Box
+        sx={[
+            {
+                mb: 5,
+                textAlign: align
+            },
+            ...(Array.isArray(sx) ? sx : [sx])
+        ]}>
+            <Typography
+            variant='overline'
+            component='p'
+            color='primary.main'>
+                {number}
+            </Typography>
+            <Typography
+            variant='h3'
+            sx={{ mt: 0.5 }}>
+                {title}
+            </Typography>
             <Box
             sx={{
                 height: 2,
                 width: 48,
-                mt: 1,
-                ml: '22px',
+                mt: 2,
+                mx: align === 'center' ? 'auto' : 0,
                 backgroundColor: 'primary.main',
                 borderRadius: 1
             }}/>

@@ -7,7 +7,7 @@ import { SocialsButtons } from '@/components/socials';
 import { Analytics } from '@vercel/analytics/react';
 
 import '@fontsource/cascadia-mono';
-import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/fraunces';
 import '@fontsource-variable/inter';
 
 const App = (props: AppProps) => {

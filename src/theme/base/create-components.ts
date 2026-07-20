@@ -18,7 +18,7 @@ export const createComponents = (): Components => {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '12px',
+          borderRadius: '999px',
           textTransform: 'none'
         },
         sizeSmall: {
@@ -88,12 +88,16 @@ export const createComponents = (): Components => {
         html: {
           MozOsxFontSmoothing: 'grayscale',
           WebkitFontSmoothing: 'antialiased',
+          backgroundColor: '#1D2129',
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100%',
           width: '100%'
         },
         body: {
+          // Transparent so the fixed z-index:-1 PatternBackground can show
+          // through; the page colour lives on html.
+          backgroundColor: 'transparent',
           display: 'flex',
           flex: '1 1 auto',
           flexDirection: 'column',
